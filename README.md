@@ -17,7 +17,7 @@ O **SisMonitoria** é uma aplicação web nascida da necessidade de contornar a 
 ## 🛠️ Tecnologias Utilizadas
 * **Frontend:** React / HTML5 / CSS3 (Design focado em UX/UI com uso estratégico de **padding** e elementos interativos).
 * **Backend:** Node.js.
-* **Autenticação:** Google OAuth 2.0 / Azure AD.
+* **Autenticação:** Google OAuth 2.0.
 * **Banco de Dados:** Estrutura baseada em **Single Source of Truth** para integridade de dados.
 
 ## 📂 Estrutura do Projeto
