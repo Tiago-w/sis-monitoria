@@ -8,7 +8,7 @@
 O **SisMonitoria** é uma aplicação web nascida da necessidade de contornar a burocracia de integração com sistemas institucionais legados. Através de uma arquitetura 100% descentralizada, o projeto utiliza um sistema inovador de **Tokens** para garantir autonomia a professores e monitores, eliminando a dependência de APIs lentas da reitoria.
 
 ## 🚀 Funcionalidades Principais
-* **Autenticação Bypass:** Login via Google/Microsoft OAuth para e-mails `@inf.ufpel.edu.br` e `@ufpel.edu.br`.
+* **Autenticação Bypass:** Login via Google OAuth para e-mails `@inf.ufpel.edu.br`.
 * **Gestão via Tokens:** Professores geram chaves de acesso que configuram automaticamente as regras da monitoria no banco de dados.
 * **Status em Tempo Real:** Toggles de disponibilidade que atualizam instantaneamente para os alunos se o monitor está ativo.
 * **Frequência Antifraude:** Registro de presença via **QR Code dinâmico**, validando a assiduidade em atendimentos presenciais ou via **Discord**.
