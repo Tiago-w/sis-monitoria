@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SisMonitorias - UFPEL</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="app">
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+      <div class="header-left">
+        <div class="logo-circle">UFPEL<br><span>RS·BR</span></div>
+        <span class="ufpel-brand">UFPEL</span>
+        <div class="header-divider"></div>
+        <div class="header-sys">Sistema Integrado de<br>Gestão e Acesso a Monitorias</div>
+      </div>
+      <div class="header-right" id="header-right">
+        <svg class="icon-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="8" r="4"/>
+          <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+      </div>
+    </header>
+
+    <!-- ===== CONTEÚDO ===== -->
+    <main class="content">
+
+      <!-- =========================================================
+           LOGIN
+      ========================================================== -->
+      <section class="screen active" id="screen-login">
+        <div class="auth-center">
+          <div class="auth-logo">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5">
+              <rect x="3" y="11" width="18" height="11" rx="2"/>
+              <path d="M7 11V7a5 5 0 0110 0v4"/>
+            </svg>
+          </div>
+          <h1 class="auth-title">Portal de autenticação SisMonitorias</h1>
+          <div class="auth-buttons">
+            <button class="btn-auth" onclick="App.openGoogle('monitor')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+                <rect x="14" y="14" width="6" height="6" rx="1"/>
+                <path d="M17 14v-2"/>
+              </svg>
+              Monitor
+            </button>
+            <button class="btn-auth" onclick="App.openGoogle('aluno')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+              </svg>
+              Aluno
+            </button>
+          </div>
+          <button class="btn-link" onclick="App.goTo('screen-token')">Gerar Token</button>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           TOKEN
+      ========================================================== -->
+      <section class="screen" id="screen-token">
+        <div class="auth-center">
+          <h1 class="auth-title">Portal de autenticação SisMonitorias</h1>
+          <div class="token-form">
+            <p class="token-label">Insira o token para continuar:</p>
+            <div class="token-input-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+                <rect x="14" y="14" width="6" height="6" rx="1"/>
+                <path d="M17 14v-2"/>
+              </svg>
+              <input id="token-field" type="text" placeholder="Cole o token aqui..."
+                onkeydown="if(event.key==='Enter') App.submitToken()" />
+            </div>
+            <button class="btn-auth" style="margin-top:12px;justify-content:center;" onclick="App.submitToken()">
+              Confirmar
+            </button>
+          </div>
+          <button class="btn-link" onclick="App.goTo('screen-login')" style="margin-top:16px;">← Voltar</button>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           ALUNO — PAINEL PRINCIPAL
+      ========================================================== -->
+      <section class="screen" id="screen-aluno">
+        <table class="table-main">
+          <thead>
+            <tr>
+              <th>Matéria</th>
+              <th>Nome do Monitor</th>
+              <th>Usuário Discord</th>
+              <th>Status</th>
+              <th>Sala</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Introdução à Ciência da Computação</td>
+              <td>Ana Souza</td><td>@ana.souza</td>
+              <td><span class="badge badge-green"><span class="dot dot-green"></span>Disponível</span></td>
+              <td>317 - Anglo</td>
+            </tr>
+            <tr>
+              <td>Programação de Computadores</td>
+              <td>Carlos Eduardo</td><td>@carlosedu</td>
+              <td><span class="badge badge-red"><span class="dot dot-red"></span>Indisponível</span></td>
+              <td>317 - Anglo</td>
+            </tr>
+            <tr>
+              <td>Sistemas Discretos</td>
+              <td>Mariana Silva</td><td>@mari.silva</td>
+              <td><span class="badge badge-red"><span class="dot dot-red"></span>Indisponível</span></td>
+              <td>317 - Anglo</td>
+            </tr>
+            <tr>
+              <td>Algoritmos e Estruturas de Dados 1 (AED 1)</td>
+              <td>Rafael Costa</td><td>@rafacosta_</td>
+              <td><span class="badge badge-green"><span class="dot dot-green"></span>Disponível</span></td>
+              <td>317 - Anglo</td>
+            </tr>
+            <tr>
+              <td>Linguagens Formais</td>
+              <td>Beatriz Santos</td><td>@bia.santos</td>
+              <td><span class="badge badge-red"><span class="dot dot-red"></span>Indisponível</span></td>
+              <td>317 - Anglo</td>
+            </tr>
+            <tr>
+              <td>Álgebra Linear</td>
+              <td>Fernanda Lima</td><td>@fernanda.lima</td>
+              <td><span class="badge badge-red"><span class="dot dot-red"></span>Indisponível</span></td>
+              <td>317 - Anglo</td>
+            </tr>
+            <tr>
+              <td>Arquitetura de Computadores</td>
+              <td>Pedro Henrique</td><td>@pedro.h</td>
+              <td><span class="badge badge-green"><span class="dot dot-green"></span>Disponível</span></td>
+              <td>317 - Anglo</td>
+            </tr>
+            <tr>
+              <td>Sistemas Operacionais</td>
+              <td>Camila Dias</td><td>@camiladias</td>
+              <td><span class="badge badge-red"><span class="dot dot-red"></span>Indisponível</span></td>
+              <td>317 - Anglo</td>
+            </tr>
+            <tr>
+              <td>Redes de Computadores</td>
+              <td>João Pedro</td><td>@joaopedro.comp</td>
+              <td><span class="badge badge-green"><span class="dot dot-green"></span>Disponível</span></td>
+              <td>317 - Anglo</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="actions">
+          <button class="btn-action" onclick="App.goTo('screen-aluno-presenca')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="7" height="7" rx="1"/>
+              <path d="M3 14h4v4H3zm7-7h4m-4 4h4m-4 4h4m3-8h4m-4 4h4m-4 4h4"/>
+            </svg>
+            Registrar presença
+          </button>
+          <button class="btn-action" onclick="App.goTo('screen-aluno-horarios')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>
+            </svg>
+            Consultar horários
+          </button>
+          <button class="btn-action" onclick="App.goTo('screen-aluno-historico')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            Meu histórico
+          </button>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           ALUNO — REGISTRAR PRESENÇA
+      ========================================================== -->
+      <section class="screen" id="screen-aluno-presenca">
+        <div class="auth-center">
+          <h1 class="auth-title">Registrar presença</h1>
+          <p class="subtitle-text">Aproxime o QR Code ao leitor ou insira o código fornecido pelo monitor.</p>
+          <div class="qrcode-box">
+            <svg width="110" height="110" viewBox="0 0 80 80" fill="none">
+              <rect x="4" y="4" width="28" height="28" rx="2" fill="#1a6070"/>
+              <rect x="9" y="9" width="18" height="18" rx="1" fill="#fff"/>
+              <rect x="13" y="13" width="10" height="10" fill="#1a6070"/>
+              <rect x="48" y="4" width="28" height="28" rx="2" fill="#1a6070"/>
+              <rect x="53" y="9" width="18" height="18" rx="1" fill="#fff"/>
+              <rect x="57" y="13" width="10" height="10" fill="#1a6070"/>
+              <rect x="4" y="48" width="28" height="28" rx="2" fill="#1a6070"/>
+              <rect x="9" y="53" width="18" height="18" rx="1" fill="#fff"/>
+              <rect x="13" y="57" width="10" height="10" fill="#1a6070"/>
+              <rect x="40" y="40" width="6" height="6" fill="#1a6070"/>
+              <rect x="52" y="40" width="6" height="6" fill="#1a6070"/>
+              <rect x="64" y="40" width="12" height="6" fill="#1a6070"/>
+              <rect x="40" y="52" width="12" height="6" fill="#1a6070"/>
+              <rect x="58" y="52" width="6" height="6" fill="#1a6070"/>
+              <rect x="40" y="64" width="6" height="12" fill="#1a6070"/>
+              <rect x="52" y="58" width="24" height="6" fill="#1a6070"/>
+            </svg>
+          </div>
+          <button class="btn-action" onclick="App.goTo('screen-aluno')">← Voltar</button>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           ALUNO — CONSULTAR HORÁRIOS
+      ========================================================== -->
+      <section class="screen" id="screen-aluno-horarios">
+        <table class="table-main">
+          <thead>
+            <tr>
+              <th>Matéria</th>
+              <th>Dias da semana</th>
+              <th>Horários</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Introdução à Ciência da Computação</td><td>Segunda e Quarta*</td><td>08:30 - 10:00</td></tr>
+            <tr><td>Programação de Computadores</td><td>Terça e Quinta</td><td>10:30 - 12:30</td></tr>
+            <tr><td>Sistemas Discretos</td><td>Segunda* e Quarta</td><td>13:30 - 15:30</td></tr>
+            <tr><td>Algoritmos e Estruturas de Dados 1 (AED 1)</td><td>Quarta e Sexta</td><td>15:30 - 17:00</td></tr>
+            <tr><td>Linguagens Formais</td><td>Terça* e Quinta</td><td>08:30 - 10:30</td></tr>
+            <tr><td>Álgebra Linear</td><td>Segunda* e Sexta</td><td>15:30 - 17:00</td></tr>
+            <tr><td>Arquitetura de Computadores</td><td>Terça* e Quinta</td><td>10:30 - 12:30</td></tr>
+            <tr><td>Sistemas Operacionais</td><td>Quarta e Sexta</td><td>15:30 - 17:00</td></tr>
+            <tr><td>Redes de Computadores</td><td>Terça e Quinta</td><td>08:00 - 10:00</td></tr>
+          </tbody>
+        </table>
+        <p class="discord-note">*Horários disponibilizados pelo Discord</p>
+        <div class="actions">
+          <button class="btn-action" onclick="App.goTo('screen-aluno')">← Voltar</button>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           ALUNO — MEU HISTÓRICO
+      ========================================================== -->
+      <section class="screen" id="screen-aluno-historico">
+        <table class="table-main">
+          <thead>
+            <tr>
+              <th>Matéria</th>
+              <th style="text-align:center;">Número de aulas realizadas</th>
+              <th style="text-align:center;">Datas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Introdução à Ciência da Computação</td><td style="text-align:center;">0</td><td style="text-align:center;"><button class="btn-ver" onclick="App.goTo('screen-aluno-datas')">Ver</button></td></tr>
+            <tr><td>Programação de Computadores</td><td style="text-align:center;">8</td><td style="text-align:center;"><button class="btn-ver" onclick="App.goTo('screen-aluno-datas')">Ver</button></td></tr>
+            <tr><td>Sistemas Discretos</td><td style="text-align:center;">5</td><td style="text-align:center;"><button class="btn-ver" onclick="App.goTo('screen-aluno-datas')">Ver</button></td></tr>
+            <tr><td>Algoritmos e Estruturas de Dados 1 (AED 1)</td><td style="text-align:center;">20</td><td style="text-align:center;"><button class="btn-ver" onclick="App.goTo('screen-aluno-datas')">Ver</button></td></tr>
+            <tr><td>Linguagens Formais</td><td style="text-align:center;">0</td><td style="text-align:center;"><button class="btn-ver" onclick="App.goTo('screen-aluno-datas')">Ver</button></td></tr>
+            <tr><td>Álgebra Linear</td><td style="text-align:center;">0</td><td style="text-align:center;"><button class="btn-ver" onclick="App.goTo('screen-aluno-datas')">Ver</button></td></tr>
+            <tr><td>Arquitetura de Computadores</td><td style="text-align:center;">2</td><td style="text-align:center;"><button class="btn-ver" onclick="App.goTo('screen-aluno-datas')">Ver</button></td></tr>
+            <tr><td>Sistemas Operacionais</td><td style="text-align:center;">3</td><td style="text-align:center;"><button class="btn-ver" onclick="App.goTo('screen-aluno-datas')">Ver</button></td></tr>
+            <tr><td>Redes de Computadores</td><td style="text-align:center;">4</td><td style="text-align:center;"><button class="btn-ver" onclick="App.goTo('screen-aluno-datas')">Ver</button></td></tr>
+          </tbody>
+        </table>
+        <div class="actions">
+          <button class="btn-action" onclick="App.goTo('screen-aluno')">← Voltar</button>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           ALUNO — DATAS
+      ========================================================== -->
+      <section class="screen" id="screen-aluno-datas">
+        <div class="schedule-wrap">
+          <table class="table-schedule">
+            <thead>
+              <tr><th colspan="2" class="schedule-title">Introdução à Ciência da Computação</th></tr>
+              <tr><th>Data</th><th>Horário</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="date-pill">13/04/2026</span></td><td>8:30 - 10:00</td></tr>
+              <tr><td><span class="date-pill">15/04/2026</span></td><td>8:30 - 10:00</td></tr>
+              <tr><td><span class="date-pill">20/04/2026</span></td><td>8:30 - 10:00</td></tr>
+              <tr><td><span class="date-pill">22/04/2026</span></td><td>8:30 - 10:00</td></tr>
+            </tbody>
+          </table>
+          <div class="nav-btns">
+            <button class="btn-action" onclick="App.goTo('screen-aluno-historico')">← Voltar</button>
+            <button class="btn-action" onclick="App.goTo('screen-aluno-historico')">Próxima página →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           MONITOR — PAINEL PRINCIPAL
+      ========================================================== -->
+      <section class="screen" id="screen-monitor">
+        <h2 class="page-title">Meus horários</h2>
+        <table class="table-main">
+          <thead>
+            <tr>
+              <th>Dia da Semana</th>
+              <th>Início</th>
+              <th>Término</th>
+              <th>Sala</th>
+              <th>Disciplina</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Segunda-feira</td><td>13:30</td><td>15:30</td><td>317 - Anglo</td><td>Sistemas Discretos</td></tr>
+            <tr><td>Quarta-feira</td><td>13:30</td><td>15:30</td><td>317 - Anglo</td><td>Sistemas Discretos</td></tr>
+            <tr><td>Sexta-feira</td><td>15:30</td><td>17:30</td><td>317 - Anglo</td><td>Sistemas Discretos</td></tr>
+          </tbody>
+        </table>
+        <div class="actions">
+          <button class="btn-action" id="btn-disp" onclick="App.toggleDisponibilidade()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="7" height="7" rx="1"/>
+              <path d="M3 14h4v4H3z"/>
+            </svg>
+            <span id="disp-label">Ficar disponível</span>
+          </button>
+          <button class="btn-action" onclick="App.goTo('screen-monitor-presenca')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>
+            </svg>
+            Registrar presença
+          </button>
+          <button class="btn-action" onclick="App.goTo('screen-monitor-historico')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            Meu histórico
+          </button>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           MONITOR — REGISTRAR PRESENÇA
+      ========================================================== -->
+      <section class="screen" id="screen-monitor-presenca">
+        <div class="auth-center">
+          <h1 class="auth-title">Registrar presença</h1>
+          <p class="subtitle-text">Mostre o QR Code abaixo para o aluno escanear e confirmar a presença.</p>
+          <div class="qrcode-box">
+            <svg width="110" height="110" viewBox="0 0 80 80" fill="none">
+              <rect x="4" y="4" width="28" height="28" rx="2" fill="#1a6070"/>
+              <rect x="9" y="9" width="18" height="18" rx="1" fill="#fff"/>
+              <rect x="13" y="13" width="10" height="10" fill="#1a6070"/>
+              <rect x="48" y="4" width="28" height="28" rx="2" fill="#1a6070"/>
+              <rect x="53" y="9" width="18" height="18" rx="1" fill="#fff"/>
+              <rect x="57" y="13" width="10" height="10" fill="#1a6070"/>
+              <rect x="4" y="48" width="28" height="28" rx="2" fill="#1a6070"/>
+              <rect x="9" y="53" width="18" height="18" rx="1" fill="#fff"/>
+              <rect x="13" y="57" width="10" height="10" fill="#1a6070"/>
+              <rect x="40" y="40" width="6" height="6" fill="#1a6070"/>
+              <rect x="52" y="40" width="6" height="6" fill="#1a6070"/>
+              <rect x="64" y="40" width="12" height="6" fill="#1a6070"/>
+              <rect x="40" y="52" width="12" height="6" fill="#1a6070"/>
+              <rect x="58" y="52" width="6" height="6" fill="#1a6070"/>
+              <rect x="40" y="64" width="6" height="12" fill="#1a6070"/>
+              <rect x="52" y="58" width="24" height="6" fill="#1a6070"/>
+            </svg>
+          </div>
+          <button class="btn-action" onclick="App.goTo('screen-monitor')">← Voltar</button>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           MONITOR — MEU HISTÓRICO
+      ========================================================== -->
+      <section class="screen" id="screen-monitor-historico">
+        <div class="auth-center">
+          <h2 class="page-title">Porcentagem da monitoria concluída:</h2>
+          <div class="progress-wrap">
+            <div class="progress-bar">
+              <div class="progress-fill" style="width:50%;">50%</div>
+            </div>
+            <p class="progress-label"><strong>50h de 100h completadas!</strong></p>
+            <button class="btn-ver" onclick="App.goTo('screen-monitor-datas')" style="margin-top:20px;font-size:15px;">
+              Ver datas de aulas realizadas
+            </button>
+          </div>
+          <button class="btn-action" onclick="App.goTo('screen-monitor')" style="margin-top:28px;">← Voltar</button>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           MONITOR — DATAS
+      ========================================================== -->
+      <section class="screen" id="screen-monitor-datas">
+        <div class="schedule-wrap">
+          <table class="table-schedule">
+            <thead>
+              <tr><th colspan="2" class="schedule-title">Sistemas Discretos</th></tr>
+              <tr><th>Data</th><th>Horário</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><span class="date-pill">13/04/2026</span></td><td>13:30 - 15:30</td></tr>
+              <tr><td><span class="date-pill">15/04/2026</span></td><td>8:30 - 10:00</td></tr>
+              <tr><td><span class="date-pill">24/04/2026</span></td><td>15:30 - 17:30</td></tr>
+              <tr><td><span class="date-pill">28/04/2026</span></td><td>13:30 - 15:30</td></tr>
+            </tbody>
+          </table>
+          <div class="nav-btns">
+            <button class="btn-action" onclick="App.goTo('screen-monitor-historico')">← Voltar</button>
+            <button class="btn-action" onclick="App.goTo('screen-monitor-historico')">Próxima página →</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ===== OVERLAY GOOGLE OAUTH ===== -->
+  <div class="overlay" id="google-overlay" onclick="App.closeOverlay(event)">
+    <div class="google-popup" onclick="event.stopPropagation()">
+      <div class="google-header">
+        <svg width="20" height="20" viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+        </svg>
+        Fazer Login com o Google
+      </div>
+      <h3 class="google-choose">Escolha uma conta</h3>
+      <p class="google-sub">Prosseguir para <span style="color:#7ab8f5;">SisMonitorias</span></p>
+      <div class="account-item" onclick="App.selectAccount()">
+        <div class="account-avatar" style="background:#1a73e8;">T</div>
+        <div class="account-info">
+          <div class="account-name">Tiago W</div>
+          <div class="account-email">tiagowolowski@gmail.com</div>
+        </div>
+      </div>
+      <div class="account-item" onclick="App.selectAccount()">
+        <div class="account-avatar" style="background:#555;">T</div>
+        <div class="account-info">
+          <div class="account-name">Tiago Wolowski</div>
+          <div class="account-email">twolowski@inf.ufpel.edu.br</div>
+        </div>
+        <span class="account-status">Desconectada</span>
+      </div>
+      <hr class="google-divider"/>
+      <div class="account-item" style="cursor:default;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="1.5">
+          <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+        <span style="color:#aaa;font-size:14px;">Usar outra conta</span>
+      </div>
+      <div class="google-footer">
+        <span>Português (Brasil) ▾</span>
+        <div><a href="#">Ajuda</a>&nbsp;<a href="#">Privacidade</a>&nbsp;<a href="#">Termos</a></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
